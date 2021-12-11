@@ -1,2 +1,6 @@
-old/*
-
+*
+!*/
+!*.h
+!*.c
+!Makefile
+old
