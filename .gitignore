@@ -4,3 +4,4 @@
 !*.c
 !Makefile
 old
+.vscode
