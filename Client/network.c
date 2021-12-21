@@ -2,7 +2,7 @@
 
 unsigned char _pad(char *data, char **result, int len)
 {
-  unsigned char padlen = 12 - ((len + 4) % 16);
+  unsigned char padlen = 20 - ((len + 4) % 16);
   *result = malloc(len + padlen);
   memcpy(*result, data, len);
   rand_bytes(*result + len, padlen);
@@ -25,7 +25,7 @@ int send_ssh(int s, char *data, int len)
   padded[4] = padding_length;
   uint32_t packet_length = htonl(len + 1 + padding_length);
   memcpy(padded, &packet_length, 4);
-  int res = send(s, padded, ntohl(packet_length) + 1, 0);
+  int res = send(s, padded, ntohl(packet_length) + 4, 0);
   free(padded);
   return res;
 }

@@ -1,13 +1,9 @@
-CFLAGS = -Wall -Og -g
+CFLAGS = -Wall -Og -g -lcrypto
 
-objects := $(patsubst %.c,%.o,$(wildcard *.c))
 files := $(wildcard *.c)
 
-build: ${objects}
-	gcc ${objects} -o ssh
-
-%.o: %.c
-	$(CC) -c $(CFLAGS) $(CXXFLAGS) $< -o $@
+build: ${files}
+	$(CC) ${files} $(CFLAGS) -o ssh
 
 clean:
-	rm *.o
+	rm *.o *.so ssh
