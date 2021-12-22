@@ -4,4 +4,4 @@
 #include <openssl/evp.h>
 
 // Send a kexinit packet
-int kexinit(int s);
+int kexinit(int s, EVP_MD_CTX *hctx);
